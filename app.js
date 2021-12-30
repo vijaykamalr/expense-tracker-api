@@ -23,7 +23,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/expense', indexRouter);
-app.listen('8080',function(){
-  console.log('app listen in 8080')
+
+var port = process.env.PORT || 8080;
+app.listen(port,function(){
+  console.log('app listen in '+port)
 })
 exports.app = functions.https.onRequest(app);
