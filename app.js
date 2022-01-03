@@ -5,6 +5,7 @@ var logger = require("morgan");
 
 var cors = require("cors");
 var indexRouter = require("./routes/index");
+var passwordRouter = require("./routes/password");
 var corsOptions = {
   origin: "*",
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
@@ -21,6 +22,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/expense", indexRouter);
+
+app.use("/password", passwordRouter);
 
 var port = process.env.PORT || 8080;
 app.listen(port, function () {
